@@ -11,4 +11,13 @@
         <servlet-name>UserTokenGenerationServlet</servlet-name>
         <url-pattern>/users/token/generate</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserTokenValidationServlet</servlet-name>
+        <servlet-class>com.nexign.bootcamp.token_service.UserTokenValidationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserTokenValidationServlet</servlet-name>
+        <url-pattern>/users/token/validate</url-pattern>
+    </servlet-mapping>
 </web-app>
