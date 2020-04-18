@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>UserIdServlet</servlet-name>
-        <servlet-class>com.nexign.bootcamp.UserIdServlet</servlet-class>
+        <servlet-name>UserTokenGenerationServlet</servlet-name>
+        <servlet-class>com.nexign.bootcamp.token_service.UserTokenGenerationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserIdServlet</servlet-name>
-        <url-pattern>/users/generateID</url-pattern>
+        <servlet-name>UserTokenGenerationServlet</servlet-name>
+        <url-pattern>/users/token/generate</url-pattern>
     </servlet-mapping>
 </web-app>
