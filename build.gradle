@@ -1,3 +1,6 @@
 plugins {
     id 'java'
 }
+
+sourceCompatibility = 14
+targetCompatibility = 14
