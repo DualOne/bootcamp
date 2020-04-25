@@ -3,6 +3,9 @@ plugins {
     id 'war'
 }
 
+sourceCompatibility = 14
+targetCompatibility = 14
+
 repositories {
     jcenter()
 }
@@ -10,5 +13,3 @@ repositories {
 dependencies {
     providedCompile "javax.servlet:servlet-api:2.5"
 }
-sourceCompatibility = 14
-targetCompatibility = 14
