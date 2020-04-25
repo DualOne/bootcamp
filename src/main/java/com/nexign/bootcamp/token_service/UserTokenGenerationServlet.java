@@ -16,7 +16,7 @@ public class UserTokenGenerationServlet extends HttpServlet {
 
         String username = req.getParameter("user");
         try (PrintWriter writer = resp.getWriter()) {
-            if (username != null && !username.isEmpty()) {
+            if (username != null && !username.isBlank()) {
                 writer.println(String.format("{\"user\": \"%s\", \"token\": \"%s\"}",
                         username, UUID.nameUUIDFromBytes(username.getBytes()).toString()));
             } else {
