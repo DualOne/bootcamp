@@ -24,10 +24,10 @@ public class UserTokenValidationServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         try (PrintWriter writer = resp.getWriter()) {
-            if (requestUsername == null || requestUsername.isEmpty()) {
+            if (requestUsername == null || requestUsername.isBlank()) {
                 writer.println("{\"error\": \"Username is empty\"}");
                 resp.setStatus(400);
-            } else if (requestUserToken == null || requestUserToken.isEmpty()) {
+            } else if (requestUserToken == null || requestUserToken.isBlank()) {
                 writer.println("{\"error\": \"User token is empty\"}");
                 resp.setStatus(400);
             } else {

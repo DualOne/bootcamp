@@ -23,7 +23,7 @@ public class UserTokenGenerationServlet extends HttpServlet {
 
         String requestUsername = req.getParameter("user");
         try (PrintWriter writer = resp.getWriter()) {
-            if (requestUsername != null && !requestUsername.isEmpty()) {
+            if (requestUsername != null && !requestUsername.isBlank()) {
                 userTokenService.returnUserToken(requestUsername, resp, writer);
             } else {
                 writer.println("{\"error\": \"Username is empty\"}");
