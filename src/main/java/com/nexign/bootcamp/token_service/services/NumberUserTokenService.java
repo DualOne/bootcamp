@@ -12,7 +12,7 @@ public class NumberUserTokenService implements UserTokenService {
 
     @Override
     public void returnUserToken(String username, HttpServletResponse response, PrintWriter responseWriter) {
-        responseWriter.println(String.format("{\"user\": \"%s\", \"token\": \"%d\"}", username, getUserToken(username)));
+        responseWriter.println(String.format("{\"user\": \"%s\", \"token\": %d}", username, getUserToken(username)));
     }
 
     @Override
