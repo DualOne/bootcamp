@@ -1,15 +1,17 @@
 package com.nexign.bootcamp.token_service.services;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
+import com.nexign.bootcamp.token_service.entities.Token;
+import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
 
-/**
- * @author Yaroslav.Zakharenko
- * @since 19.04.2020 1:17
- */
-public interface UserTokenService {
+import java.util.Objects;
 
-    void returnUserToken(String username, HttpServletResponse response, PrintWriter responseWriter);
+public interface UserTokenService<T extends Token<?>> {
 
-    void validateUserToken(String username, String token, HttpServletResponse response, PrintWriter responseWriter);
+    T getToken(String username);
+
+    T convertToken(String token) throws InvalidTokenFormat;
+
+    default boolean isTokenValid(String username, String token) {
+        return Objects.equals(getToken(username), convertToken(token));
+    }
 }
