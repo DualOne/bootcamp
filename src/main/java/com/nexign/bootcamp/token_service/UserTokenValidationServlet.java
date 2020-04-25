@@ -16,10 +16,10 @@ public class UserTokenValidationServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         try (PrintWriter writer = resp.getWriter()) {
-            if (requestUsername == null || requestUsername.isEmpty()) {
+            if (requestUsername == null || requestUsername.isBlank()) {
                 writer.println("{\"error\": \"Username is empty\"}");
                 resp.setStatus(400);
-            } else if (requestUserToken == null || requestUserToken.isEmpty()) {
+            } else if (requestUserToken == null || requestUserToken.isBlank()) {
                 writer.println("{\"error\": \"User token is empty\"}");
                 resp.setStatus(400);
             } else {
@@ -33,14 +33,10 @@ public class UserTokenValidationServlet extends HttpServlet {
 
     private void validateUserToken(String username, String token, PrintWriter writer, HttpServletResponse resp) {
         try {
-            boolean isTokenValid = false;
-            switch (UserTokenGenerationServlet.TokenMode.getActiveMode()) {
-                case NUMBER:
-                    isTokenValid = Integer.parseInt(token) == UserTokenGenerationServlet.getUserTokenAsNumber(username);
-                    break;
-                case STRING:
-                    isTokenValid = token.equals(UserTokenGenerationServlet.getUserTokenAsString(username));
-            }
+            boolean isTokenValid = switch (UserTokenGenerationServlet.TokenMode.getActiveMode()) {
+                case NUMBER -> Integer.parseInt(token) == UserTokenGenerationServlet.getUserTokenAsNumber(username);
+                case STRING -> token.equals(UserTokenGenerationServlet.getUserTokenAsString(username));
+            };
 
             if (isTokenValid) {
                 resp.setStatus(204);

@@ -18,7 +18,7 @@ public class UserTokenGenerationServlet extends HttpServlet {
 
         String requestUsername = req.getParameter("user");
         try (PrintWriter writer = resp.getWriter()) {
-            if (requestUsername != null && !requestUsername.isEmpty()) {
+            if (requestUsername != null && !requestUsername.isBlank()) {
                 generateUserToken(requestUsername, writer, resp);
             } else {
                 writer.println("{\"error\": \"Username is empty\"}");
@@ -34,11 +34,8 @@ public class UserTokenGenerationServlet extends HttpServlet {
     private void generateUserToken(String username, PrintWriter writer, HttpServletResponse resp) {
         try {
             switch (TokenMode.getActiveMode()) {
-                case NUMBER:
-                    writer.println(String.format("{\"user\": \"%s\", \"token\": \"%d\"}", username, getUserTokenAsNumber(username)));
-                    break;
-                case STRING:
-                    writer.println(String.format("{\"user\": \"%s\", \"token\": \"%s\"}", username, getUserTokenAsString(username)));
+                case NUMBER -> writer.println(String.format("{\"user\": \"%s\", \"token\": \"%d\"}", username, getUserTokenAsNumber(username)));
+                case STRING -> writer.println(String.format("{\"user\": \"%s\", \"token\": \"%s\"}", username, getUserTokenAsString(username)));
             }
         } catch (IOException ex) {
             System.err.println("Error reading token mode from application.properties");
