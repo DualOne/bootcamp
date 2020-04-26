@@ -2,6 +2,7 @@ package com.nexign.bootcamp.token_service.services;
 
 import com.nexign.bootcamp.token_service.entities.StringToken;
 import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +10,20 @@ import java.util.UUID;
 
 @Service
 @Profile("string-token")
-public class StringUserTokenService implements UserTokenService<StringToken> {
+public class StringUserTokenService extends UserTokenService<StringToken> {
+
+    @Autowired
+    public StringUserTokenService(UserService userService) {
+        super(userService);
+    }
 
     @Override
-    public StringToken getToken(String username) {
+    protected StringToken getTokenByUsername(String username) {
         return new StringToken(getUserToken(username));
     }
 
     @Override
-    public StringToken convertToken(String token) throws InvalidTokenFormat {
+    protected StringToken convertToken(String token) throws InvalidTokenFormat {
         return new StringToken(token);
     }
 
