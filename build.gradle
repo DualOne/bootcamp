@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'war'
 }
 
@@ -11,5 +13,7 @@ repositories {
 }
 
 dependencies {
-    providedCompile "javax.servlet:servlet-api:2.5"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //implementation 'org.postgresql:postgresql'
 }
