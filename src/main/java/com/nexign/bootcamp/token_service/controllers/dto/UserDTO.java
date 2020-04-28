@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.util.StringJoiner;
 
-/**
- * @author Yaroslav.Zakharenko
- * @since 25.04.2020 20:28
- */
 public class UserDTO {
 
     private final String username;
