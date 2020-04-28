@@ -13,33 +13,28 @@ public class UserTokenGenerationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        String requestUsername = req.getParameter("user");
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-
-        String requestUsername = req.getParameter("user");
         try (PrintWriter writer = resp.getWriter()) {
             if (requestUsername != null && !requestUsername.isBlank()) {
-                generateUserToken(requestUsername, writer, resp);
+                generateUserToken(requestUsername, writer);
             } else {
                 writer.println("{\"error\": \"Username is empty\"}");
                 resp.setStatus(400);
-                System.err.println("No username provided");
             }
         } catch (IOException ex) {
-            System.err.println(String.format("Error printing result: %s", ex.getMessage()));
             resp.setStatus(500);
         }
     }
 
-    private void generateUserToken(String username, PrintWriter writer, HttpServletResponse resp) {
-        try {
-            switch (TokenMode.getActiveMode()) {
-                case NUMBER -> writer.println(String.format("{\"user\": \"%s\", \"token\": \"%d\"}", username, getUserTokenAsNumber(username)));
-                case STRING -> writer.println(String.format("{\"user\": \"%s\", \"token\": \"%s\"}", username, getUserTokenAsString(username)));
-            }
-        } catch (IOException ex) {
-            System.err.println("Error reading token mode from application.properties");
-            resp.setStatus(500);
+    private void generateUserToken(String username, PrintWriter writer) throws IOException {
+        switch (TokenMode.getActiveMode()) {
+            case NUMBER -> writer.println(
+                    String.format("{\"user\": \"%s\", \"token\": \"%d\"}", username, getUserTokenAsNumber(username)));
+            case STRING -> writer.println(
+                    String.format("{\"user\": \"%s\", \"token\": \"%s\"}", username, getUserTokenAsString(username)));
         }
     }
 
@@ -55,9 +50,10 @@ public class UserTokenGenerationServlet extends HttpServlet {
         STRING, NUMBER;
 
         public static TokenMode getActiveMode() throws IOException {
-            try (InputStream input = TokenMode.class.getClassLoader().getResourceAsStream("application.properties")) {
+            InputStream configs = TokenMode.class.getClassLoader().getResourceAsStream("application.properties");
+            try (configs) {
                 Properties applicationProperties = new Properties();
-                applicationProperties.load(input);
+                applicationProperties.load(configs);
                 return TokenMode.valueOf(applicationProperties.getProperty("tokenMode"));
             }
         }

@@ -26,12 +26,14 @@ public class UserTokenValidationServlet extends HttpServlet {
                 validateUserToken(requestUsername, requestUserToken, writer, resp);
             }
         } catch (IOException ex) {
-            System.err.println(String.format("Error printing result: %s", ex.getMessage()));
             resp.setStatus(500);
         }
     }
 
-    private void validateUserToken(String username, String token, PrintWriter writer, HttpServletResponse resp) {
+    private void validateUserToken(String username,
+                                   String token,
+                                   PrintWriter writer,
+                                   HttpServletResponse resp) throws IOException {
         try {
             boolean isTokenValid = switch (UserTokenGenerationServlet.TokenMode.getActiveMode()) {
                 case NUMBER -> Integer.parseInt(token) == UserTokenGenerationServlet.getUserTokenAsNumber(username);
@@ -44,11 +46,8 @@ public class UserTokenValidationServlet extends HttpServlet {
                 writer.println("{\"error\": \"User token is invalid\"}");
                 resp.setStatus(409);
             }
-        } catch (IOException ex) {
-            System.err.println("Error reading token mode from application.properties");
-            resp.setStatus(500);
         } catch (NumberFormatException ex) {
-            writer.println("{\"error\": \"User token is invalid\"}");
+            writer.println("{\"error\": \"Invalid token format\"}");
             resp.setStatus(422);
         }
     }
