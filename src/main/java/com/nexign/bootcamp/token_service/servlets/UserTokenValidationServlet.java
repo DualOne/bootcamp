@@ -34,7 +34,6 @@ public class UserTokenValidationServlet extends HttpServlet {
                 userTokenService.validateUserToken(requestUsername, requestUserToken, resp, writer);
             }
         } catch (IOException ex) {
-            System.err.println(String.format("Error printing result: %s", ex.getMessage()));
             resp.setStatus(500);
         }
     }

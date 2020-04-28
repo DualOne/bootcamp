@@ -18,20 +18,18 @@ public class UserTokenGenerationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        String requestUsername = req.getParameter("user");
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-
-        String requestUsername = req.getParameter("user");
         try (PrintWriter writer = resp.getWriter()) {
             if (requestUsername != null && !requestUsername.isBlank()) {
                 userTokenService.returnUserToken(requestUsername, resp, writer);
             } else {
                 writer.println("{\"error\": \"Username is empty\"}");
                 resp.setStatus(400);
-                System.err.println("No username provided");
             }
         } catch (IOException ex) {
-            System.err.println(String.format("Error printing result: %s", ex.getMessage()));
             resp.setStatus(500);
         }
     }

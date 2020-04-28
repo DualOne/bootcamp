@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.UUID;
 
-/**
- * @author Yaroslav.Zakharenko
- * @since 19.04.2020 1:15
- */
 @Service
 @Profile("string-token")
 public class StringUserTokenService implements UserTokenService {

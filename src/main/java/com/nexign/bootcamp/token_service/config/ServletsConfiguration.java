@@ -7,10 +7,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author Yaroslav.Zakharenko
- * @since 19.04.2020 1:12
- */
 @Configuration
 public class ServletsConfiguration {
 
