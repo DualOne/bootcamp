@@ -18,15 +18,17 @@ public class UserTokenGenerationServlet extends HttpServlet {
         try (PrintWriter writer = resp.getWriter()) {
             if (username != null && !username.isBlank()) {
                 writer.println(String.format("{\"user\": \"%s\", \"token\": \"%s\"}",
-                        username, UUID.nameUUIDFromBytes(username.getBytes()).toString()));
+                        username, getUserToken(username)));
             } else {
                 writer.println("{\"error\": \"Username is empty\"}");
                 resp.setStatus(400);
-                System.err.println("No username provided");
             }
         } catch (IOException ex) {
             resp.setStatus(500);
-            System.err.println(String.format("Error printing result: %s", ex.getMessage()));
         }
+    }
+
+    private String getUserToken(String username) {
+        return UUID.nameUUIDFromBytes(username.getBytes()).toString();
     }
 }
