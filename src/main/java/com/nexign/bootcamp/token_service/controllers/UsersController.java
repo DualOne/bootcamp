@@ -30,7 +30,7 @@ public class UsersController {
         this.userTokenService = userTokenService;
     }
 
-    @PutMapping("/create")
+    @PutMapping
     public ResponseEntity<?> createUser(@RequestBody UserDTO user) {
         if (user == null) {
             return new ResponseEntity<>(new RequestError("User info is not provided"), HttpStatus.BAD_REQUEST);
