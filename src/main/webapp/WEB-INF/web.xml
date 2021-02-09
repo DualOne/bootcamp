@@ -5,7 +5,7 @@
          version="4.0">
     <servlet>
         <servlet-name>UserTokenGenerationServlet</servlet-name>
-        <servlet-class>com.nexign.bootcamp.token_service.UserTokenGenerationServlet</servlet-class>
+        <servlet-class>com.nexign.bootcamp.tokenservice.UserTokenGenerationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserTokenGenerationServlet</servlet-name>
