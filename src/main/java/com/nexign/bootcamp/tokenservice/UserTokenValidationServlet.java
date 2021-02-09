@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service;
+package com.nexign.bootcamp.tokenservice;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
