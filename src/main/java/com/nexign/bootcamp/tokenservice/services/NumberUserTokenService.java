@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;

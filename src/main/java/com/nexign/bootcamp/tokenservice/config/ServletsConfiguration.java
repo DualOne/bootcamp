@@ -1,8 +1,8 @@
-package com.nexign.bootcamp.token_service.config;
+package com.nexign.bootcamp.tokenservice.config;
 
-import com.nexign.bootcamp.token_service.services.UserTokenService;
-import com.nexign.bootcamp.token_service.servlets.UserTokenGenerationServlet;
-import com.nexign.bootcamp.token_service.servlets.UserTokenValidationServlet;
+import com.nexign.bootcamp.tokenservice.services.UserTokenService;
+import com.nexign.bootcamp.tokenservice.servlets.UserTokenGenerationServlet;
+import com.nexign.bootcamp.tokenservice.servlets.UserTokenValidationServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

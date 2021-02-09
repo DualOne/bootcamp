@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
