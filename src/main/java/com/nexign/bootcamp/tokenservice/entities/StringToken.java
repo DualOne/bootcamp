@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.entities;
+package com.nexign.bootcamp.tokenservice.entities;
 
 public class StringToken extends Token<String> {
 

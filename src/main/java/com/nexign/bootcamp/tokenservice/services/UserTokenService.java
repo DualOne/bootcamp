@@ -1,7 +1,7 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
-import com.nexign.bootcamp.token_service.entities.Token;
-import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
+import com.nexign.bootcamp.tokenservice.entities.Token;
+import com.nexign.bootcamp.tokenservice.exceptions.InvalidTokenFormat;
 
 import java.util.Objects;
 

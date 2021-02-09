@@ -1,10 +1,10 @@
-package com.nexign.bootcamp.token_service.config;
+package com.nexign.bootcamp.tokenservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(scanBasePackages = "com.nexign.bootcamp.token_service")
+@SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

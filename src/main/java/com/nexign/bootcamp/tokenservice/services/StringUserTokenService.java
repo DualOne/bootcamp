@@ -1,7 +1,7 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
-import com.nexign.bootcamp.token_service.entities.StringToken;
-import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
+import com.nexign.bootcamp.tokenservice.entities.StringToken;
+import com.nexign.bootcamp.tokenservice.exceptions.InvalidTokenFormat;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 

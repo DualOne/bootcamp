@@ -1,9 +1,9 @@
-package com.nexign.bootcamp.token_service.controllers;
+package com.nexign.bootcamp.tokenservice.controllers;
 
-import com.nexign.bootcamp.token_service.controllers.dto.RequestError;
-import com.nexign.bootcamp.token_service.controllers.dto.TokenDTO;
-import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
-import com.nexign.bootcamp.token_service.services.UserTokenService;
+import com.nexign.bootcamp.tokenservice.controllers.dto.RequestError;
+import com.nexign.bootcamp.tokenservice.controllers.dto.TokenDTO;
+import com.nexign.bootcamp.tokenservice.exceptions.InvalidTokenFormat;
+import com.nexign.bootcamp.tokenservice.services.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +24,8 @@ public class UsersController {
         this.userTokenService = userTokenService;
     }
 
-    @PostMapping("/{username}/token/generate")
-    public ResponseEntity<?> generateToken(@PathVariable String username) {
+    @PostMapping("/{username}/token")
+    public ResponseEntity<Object> generateToken(@PathVariable String username) {
         if (username == null || username.isBlank()) {
             return new ResponseEntity<>(new RequestError("Username is empty"), HttpStatus.BAD_REQUEST);
         }
@@ -33,8 +33,8 @@ public class UsersController {
     }
 
     @PostMapping("/{username}/token/validate")
-    public ResponseEntity<?> validateToken(@PathVariable String username,
-                                           @RequestBody TokenDTO token) {
+    public ResponseEntity<Object> validateToken(@PathVariable String username,
+                                                @RequestBody TokenDTO token) {
         if (username == null || username.isBlank()) {
             return new ResponseEntity<>(new RequestError("Username is empty"), HttpStatus.BAD_REQUEST);
         }
