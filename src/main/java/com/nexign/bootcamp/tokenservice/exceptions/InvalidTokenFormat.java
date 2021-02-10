@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.exceptions;
+package com.nexign.bootcamp.tokenservice.exceptions;
 
 public class InvalidTokenFormat extends RuntimeException {
 

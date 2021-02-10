@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.entities;
+package com.nexign.bootcamp.tokenservice.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

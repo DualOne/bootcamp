@@ -1,17 +1,17 @@
-package com.nexign.bootcamp.token_service.entities;
+package com.nexign.bootcamp.tokenservice.entities;
 
 import java.util.Objects;
 
 public abstract class Token<T> {
 
-    private final T token;
+    private final T value;
 
-    public Token(T token) {
-        this.token = token;
+    protected Token(T value) {
+        this.value = value;
     }
 
-    public T getToken() {
-        return token;
+    public T getValue() {
+        return value;
     }
 
     @Override
@@ -19,11 +19,11 @@ public abstract class Token<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Token<?> other = (Token<?>) o;
-        return Objects.equals(token, other.token);
+        return Objects.equals(value, other.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(token);
+        return Objects.hash(value);
     }
 }

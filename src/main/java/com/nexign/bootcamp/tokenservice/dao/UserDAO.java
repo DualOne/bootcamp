@@ -1,6 +1,6 @@
-package com.nexign.bootcamp.token_service.dao;
+package com.nexign.bootcamp.tokenservice.dao;
 
-import com.nexign.bootcamp.token_service.entities.User;
+import com.nexign.bootcamp.tokenservice.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

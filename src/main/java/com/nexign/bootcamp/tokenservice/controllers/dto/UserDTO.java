@@ -1,4 +1,4 @@
-package com.nexign.bootcamp.token_service.controllers.dto;
+package com.nexign.bootcamp.tokenservice.controllers.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

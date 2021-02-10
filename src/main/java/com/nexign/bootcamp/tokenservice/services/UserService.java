@@ -1,7 +1,7 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
-import com.nexign.bootcamp.token_service.dao.UserDAO;
-import com.nexign.bootcamp.token_service.entities.User;
+import com.nexign.bootcamp.tokenservice.dao.UserDAO;
+import com.nexign.bootcamp.tokenservice.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

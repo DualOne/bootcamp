@@ -1,8 +1,8 @@
-package com.nexign.bootcamp.token_service.services;
+package com.nexign.bootcamp.tokenservice.services;
 
-import com.nexign.bootcamp.token_service.entities.Token;
-import com.nexign.bootcamp.token_service.entities.User;
-import com.nexign.bootcamp.token_service.exceptions.InvalidTokenFormat;
+import com.nexign.bootcamp.tokenservice.entities.Token;
+import com.nexign.bootcamp.tokenservice.entities.User;
+import com.nexign.bootcamp.tokenservice.exceptions.InvalidTokenFormat;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -11,7 +11,7 @@ public abstract class UserTokenService<T extends Token<?>> {
 
     private final UserService userService;
 
-    public UserTokenService(UserService userService) {
+    protected UserTokenService(UserService userService) {
         this.userService = userService;
     }
 
