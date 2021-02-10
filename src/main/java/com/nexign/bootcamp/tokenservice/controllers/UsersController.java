@@ -27,7 +27,7 @@ public class UsersController {
     @PostMapping("/{username}/token")
     public ResponseEntity<Object> generateToken(@PathVariable String username) {
         if (username == null || username.isBlank()) {
-            return new ResponseEntity<>(new RequestError("Username is empty"), HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(new RequestError("Username is empty"));
         }
         return ResponseEntity.ok(userTokenService.getToken(username));
     }
@@ -36,18 +36,18 @@ public class UsersController {
     public ResponseEntity<Object> validateToken(@PathVariable String username,
                                                 @RequestBody TokenDTO token) {
         if (username == null || username.isBlank()) {
-            return new ResponseEntity<>(new RequestError("Username is empty"), HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(new RequestError("Username is empty"));
         }
         if (token == null || token.getToken() == null || token.getToken().isBlank()) {
-            return new ResponseEntity<>(new RequestError("Token is empty"), HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(new RequestError("Token is empty"));
         }
 
         try {
             return userTokenService.isTokenValid(username, token.getToken())
-                    ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-                    : new ResponseEntity<>(new RequestError("Token is invalid"), HttpStatus.CONFLICT);
+                    ? ResponseEntity.noContent().build()
+                    : ResponseEntity.status(HttpStatus.CONFLICT).body(new RequestError("Token is invalid"));
         } catch (InvalidTokenFormat ex) {
-            return new ResponseEntity<>(new RequestError("Invalid token format"), HttpStatus.UNPROCESSABLE_ENTITY);
+            return ResponseEntity.unprocessableEntity().body(new RequestError("Invalid token format"));
         }
     }
 }
